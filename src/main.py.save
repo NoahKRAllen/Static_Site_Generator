@@ -1,12 +1,11 @@
 from textnode import TextNode, TextType
-from inline import extract_title, markdown_to_html_node
+import inline
 
 import shutil
 import os
 def main():
 	delete_remake_public_dir('public')
 	copy_dir_to_dir('static', 'public')
-	generate_page("content/index.md", "template.html", "public/index.html")
 
 
 def delete_remake_public_dir(dir_path):
@@ -37,11 +36,8 @@ def generate_page(from_path, template_path, dest_path):
 	title = extract_title(markdown_data)
 	template_updated = template_data.replace("{{ Title }}", title)
 	template_updated = template_updated.replace("{{ Content }}", markdown_html_content)
-	dirname = os.path.dirname(dest_path)
-	if dirname != "":
-		os.makedirs(dirname, exist_ok=True)
 	with open(dest_path, 'w', encoding="utf-8") as f:
-		f.write(template_updated)
+		f = os.write(template_updated)
 
 
 if __name__ == "__main__":
