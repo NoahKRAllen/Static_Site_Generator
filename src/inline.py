@@ -139,7 +139,7 @@ def code_to_html_node(code_text):
 def heading_to_html_node(heading_text):
 	symbol_count = 0
 	for char in heading_text:
-		if char != "#": 
+		if char != "#":
 			break
 		symbol_count += 1
 	tag = f"h{symbol_count}"
